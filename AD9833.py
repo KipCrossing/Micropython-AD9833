@@ -79,7 +79,7 @@ Send(LSB)    #lower 14 bits
 Send(MSB)    #Upper 14 bits
 
 #phase
-Send(0&0xC000)    # Place holder for now - does nothing. 
+#Send(0&0xC000)    # Place holder for now - does nothing. 
 #shape
 Send(0x2000)    # square: 0x2020, sin: 0x2000, triangle: 0x2002
 
