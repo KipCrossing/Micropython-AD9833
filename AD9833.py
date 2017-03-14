@@ -27,8 +27,8 @@ import time
 # Define frequency in Hz
 Freq =10000  
 
-# Obtain Clock Frequency        #Note: this method may need to be checked as freq does not match output frequency
-(x,x,ClockFreq,x) = pyb.freq()
+# Clock Frequency
+ClockFreq = 25000000
 
 # Calculate frequency word to send
 word = hex(round((Freq*2**28)/ClockFreq))
