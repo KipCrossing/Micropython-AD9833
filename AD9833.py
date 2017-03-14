@@ -14,6 +14,7 @@ DGND -> GND (any)
 SDATA -> MOSI (X8)
 SCLK -> SCK (X6)
 FSYNC -> ss (X5)
+MCLK -> Timer (X4)
 AGND -> GND (any)
 
 
@@ -23,12 +24,20 @@ from pyb import Pin
 from pyb import SPI
 from pyb import ADC
 import time
+from pyb import Timer
+
+
 
 # Define frequency in Hz
 Freq =10000  
 
 # Clock Frequency
-ClockFreq = 25000000
+ClockFreq = 16000000
+
+p = Pin('X4') # X4 has TIM2, CH1
+tim = Timer(9, freq=ClockFreq)
+ch = tim.channel(2, Timer.PWM, pin=p)
+ch.pulse_width_percent(50)
 
 # Calculate frequency word to send
 word = hex(round((Freq*2**28)/ClockFreq))
@@ -70,7 +79,7 @@ Send(LSB)    #lower 14 bits
 Send(MSB)    #Upper 14 bits
 
 #phase
-Send(0&0xC000)
+Send(0&0xC000)    # Place holder for now - does nothing. 
 #shape
 Send(0x2000)    # square: 0x2020, sin: 0x2000, triangle: 0x2002
 
