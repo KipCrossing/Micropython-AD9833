@@ -32,9 +32,11 @@ from pyb import Timer
 Freq =10000  
 
 # Clock Frequency
-ClockFreq = 16000000
+ClockFreq = 25000000
 
-p = Pin('X4') # X4 has TIM2, CH1
+# Note: some AD9833 PCBs do not include a MCLK pin and therefore you should check its clock rate - mine is 25 MHz
+
+p = Pin('X4') # X4 has TIM9, CH2
 tim = Timer(9, freq=ClockFreq)
 ch = tim.channel(2, Timer.PWM, pin=p)
 ch.pulse_width_percent(50)
@@ -92,9 +94,9 @@ while True:
 '''
 # For observing the wave using pin X19 ADC
 adc = pyb.ADC(pyb.Pin.board.X19)    # create an ADC on pin X19
-buf = bytearray(1000)                # create a buffer of 100 bytes
-adc.read_timed(buf, 1000000)             # read analog values into buf at 10Hz
-                                    #   this will take 10 seconds to finish
+buf = bytearray(1000)                # create a buffer of 1000 bytes
+adc.read_timed(buf, 1000000)             # read analog values into buf at 1000000Hz
+
 for val in buf:                     # loop over all values
     print(val)                      # print the value out
 
