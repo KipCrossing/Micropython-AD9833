@@ -1,23 +1,18 @@
-#from pyb import Pin
-#from pyb import SPI
-
+# By Kipling Crossing
 class AD9833(object):
 
     # Clock Frequency
     ClockFreq = 25000000
     freq = 10000
     shape_word =  0x2000
-    shape_type = "Sine"
 
     def __init__(self,spi,ss):
         self.spi = spi
         self.ss = ss
 
-
     #function for splitting hex into high and low bits
     def _bytes(self,integer):
         return divmod(integer, 0x100)
-
 
     def _send(self, data):
         high, low = self._bytes(data)
@@ -31,18 +26,23 @@ class AD9833(object):
 
     def set_freq(self,freq):
         self.freq = freq
-        print("Frequency set to %s" % self.freq)
 
     def set_type(self,inter):
         if inter == 1:
             self.shape_word = 0x2020
-            self.shape_type = "Square"
         elif inter == 2:
             self.shape_word = 0x2002
-            self.shape_type = "Triangle"
         else:
             self.shape_word = 0x2000
-            self.hape_type = "Sine"
+
+    @property
+    def shape_type(self):
+        if self.shape_word == 0x2020:
+            return "Square"
+        elif self.shape_word == 0x2002:
+            return "Triangle"
+        else:
+            return "Sine"
 
     def send(self):
         # Calculate frequency word to send
