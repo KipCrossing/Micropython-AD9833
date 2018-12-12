@@ -1,5 +1,5 @@
 # Micropython-AD9833
-This script is written in python 3.x for interfacing the AD9833 with microcontrollers with micropython (specifically the PyBoard) over SPI.
+This script is written in python 3.x for interfacing the AD9833 with micropython microcontrollers (specifically the PyBoard) over SPI.
 
 ## Usage
 
@@ -46,5 +46,3 @@ You can also get some useful information
 print(wave.shape_type)
 print(wave.freq)
 ```
-
-![Alt text](/LoPy-connections.gif?raw=true "Optional Title")
