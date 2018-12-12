@@ -5,7 +5,7 @@ This script is written in python 3.x for interfacing the AD9833 with microcontro
 
 Import
 ```
-from AD9833 import AD9833
+from ad9833 import AD9833
 from pyb import Pin
 from pyb import SPI
 ```
@@ -21,7 +21,7 @@ spi = SPI(1, SPI.MASTER, baudrate=9600, polarity=1, phase=0,firstbit=SPI.MSB)
 
 Takes 2 arguments: sbi and ss
 ```
-wave = AD9833(sbi,ss)
+wave = AD9833(spi,ss)
 ```
 
 Set the frequency

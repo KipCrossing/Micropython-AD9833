@@ -46,20 +46,15 @@ class AD9833(object):
 
     def send(self):
         # Calculate frequency word to send
-
         word = hex(int(round((self.freq*2**28)/self.ClockFreq)))
 
         # Split frequency word onto its seperate bytes
         MSB = (int(word,16) & 0xFFFC000) >> 14
         LSB = int(word,16) & 0x3FFF
 
-
         # Set control bits DB15 = 0 and DB14 = 1; for frequency register 0
         MSB |= 0x4000
         LSB |= 0x4000
-
-
-
 
         self._send(0x2100)
         #Set the frequency
