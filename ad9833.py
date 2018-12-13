@@ -60,7 +60,5 @@ class AD9833(object):
         #Set the frequency
         self._send(LSB)    #lower 14 bits
         self._send(MSB)    #Upper 14 bits
-        #phase
-        #Send(0&0xC000)    # Place holder for now - does nothing.
-        #shape
+        #Set the shape
         self._send(self.shape_word)    # square: 0x2020, sin: 0x2000, triangle: 0x2002
