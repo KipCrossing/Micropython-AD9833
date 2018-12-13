@@ -1,4 +1,4 @@
-from AD9833 import AD9833
+from ad9833 import AD9833
 
 # DUMMY classes for testing without board
 
