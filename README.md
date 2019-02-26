@@ -1,5 +1,5 @@
 # Micropython-AD9833
-This script is written in python 3.x for interfacing the AD9833 with micropython microcontrollers (specifically the PyBoard) over SPI.
+This script is written in python 3.x for interfacing the AD9833 with micropython microcontrollers over SPI.
 
 ## Usage
 
